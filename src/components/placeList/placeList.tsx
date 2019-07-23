@@ -9,7 +9,7 @@ interface dataObject {
 }
 type Props = {
   places: dataObject[];
-  deleteHandler: (e: any) => any;
+  placeSelected: (e: any) => any;
 };
 
 const PlaceList: React.FC<Props> = props => {
@@ -20,7 +20,7 @@ const PlaceList: React.FC<Props> = props => {
       renderItem={info => {
         return (
           <ListItems
-            itemPressd={() => props.deleteHandler(info.item.key)}
+            itemPressd={() => props.placeSelected(info.item.key)}
             locationPlaces={info.item.name}
             placeImage={info.item.image}
           />
@@ -33,7 +33,8 @@ const PlaceList: React.FC<Props> = props => {
 const styles = StyleSheet.create({
   ScrollViewsStyle: {
     width: '100%'
-  }
+  },
+ 
 });
 
 export default PlaceList;
