@@ -10,12 +10,17 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
-import ListItems from './src/components/ListItem/ListItem';
-import PlaceInput from './src/components/placeInput/placeInput';
+import PlaceInput from './src/components//placeInput/placeInput';
+import PlaceList from './src/components/placeList/placeList';
+
+interface dataObject {
+  key: any;
+  value: string;
+}
 
 type State = {
   placesName: any;
-  places: Array<string>;
+  places: dataObject[];
 };
 
 export class App extends Component<{}, State> {
@@ -29,12 +34,17 @@ export class App extends Component<{}, State> {
   };
 
   addPlaceHandler = () => {
+    console.log(this.state.placesName, 'this.state.placesName');
+
     if (this.state.placesName.trim() === '') {
       return;
     }
     this.setState(prevState => {
       return {
-        places: prevState.places.concat(this.state.placesName),
+        places: prevState.places.concat({
+          key: Math.random(),
+          value: this.state.placesName
+        }),
         placesName: ''
       };
     });
@@ -44,12 +54,12 @@ export class App extends Component<{}, State> {
     this.setState(prevState => {
       return {
         places: prevState.places.filter((place, i) => {
-          return i !== index;
+          return place.key !== index;
         })
       };
     });
   };
-  placeDeleteHandler = () => {};
+
   render() {
     return (
       <View style={styles.container}>
@@ -59,15 +69,10 @@ export class App extends Component<{}, State> {
           addPlaceHandler={this.addPlaceHandler}
         />
 
-        <ScrollView style={styles.ScrollViewsStyle}>
-          {this.state.places.map((pl: string, i: number) => (
-            <ListItems
-              itemPressd={() => this.deleteHandler(i)}
-              key={i}
-              places={pl}
-            />
-          ))}
-        </ScrollView>
+        <PlaceList
+          places={this.state.places}
+          deleteHandler={this.deleteHandler}
+        />
       </View>
     );
   }
@@ -81,9 +86,6 @@ const styles = StyleSheet.create({
     padding: 46,
     backgroundColor: '#fff',
     justifyContent: 'flex-start'
-  },
-  ScrollViewsStyle :{
-    width: "100%"
   }
 });
 

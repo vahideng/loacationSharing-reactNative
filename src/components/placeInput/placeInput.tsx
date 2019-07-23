@@ -40,11 +40,7 @@ const styles = StyleSheet.create({
         width: '30%',
         alignItems: 'center'
       },
-      listPlaces: {
-        flex: 1,
-        padding: 40,
-        alignSelf: 'flex-start'
-      }
+     
 });
 
 export default placeInput;

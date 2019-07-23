@@ -3,13 +3,13 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 
 type Props = {
-  places: string;
+  locationPlaces: string;
   itemPressd: (i: any)=>(void)
 };
 
 const listItem: React.FC<Props> = props => (
   <TouchableOpacity style={styles.listItem} onPress={props.itemPressd}>
-    <Text>{props.places}</Text>
+    <Text>{props.locationPlaces}</Text>
   </TouchableOpacity>
 );
 
