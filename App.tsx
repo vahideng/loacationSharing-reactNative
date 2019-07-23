@@ -58,23 +58,22 @@ export class App extends Component<{}, State> {
     });
   };
 
-  onModalClosed =():void=>{
-    this.setState({selectedPlace : null})
-  }
+  onModalClosed = (): void => {
+    this.setState({ selectedPlace: null });
+  };
 
-  onItemDelete =(key:number):void =>{
-    console.log(key,"key");
-    
+  onItemDelete = (key: number): void => {
+    console.log(key, 'key');
 
-    this.setState(pervState =>{
-      return{
-        places: pervState.places.filter(place=>{
-          return place.key !== key
+    this.setState(pervState => {
+      return {
+        places: pervState.places.filter(place => {
+          return place.key !== key;
         }),
-        selectedPlace : null
-      }
-    })
-  }
+        selectedPlace: null
+      };
+    });
+  };
   placeSelected = (index: number) => {
     this.setState(prevState => {
       return {
@@ -86,11 +85,14 @@ export class App extends Component<{}, State> {
   };
 
   render() {
-
-    
     return (
       <View style={styles.container}>
-        <PlaceDetail onModalClosed={this.onModalClosed} onItemDelete={this.onItemDelete} slectedPlace={this.state.selectedPlace} PlaceImage />
+        <PlaceDetail
+          onModalClosed={this.onModalClosed}
+          onItemDelete={this.onItemDelete}
+          slectedPlace={this.state.selectedPlace}
+          PlaceImage
+        />
         <PlaceInput
           placesName={this.state.placesName}
           placeCHangeHandler={this.placeCHangeHandler}
