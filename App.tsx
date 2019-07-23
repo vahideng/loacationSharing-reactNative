@@ -8,14 +8,17 @@
  * @format
  */
 
+
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import PlaceInput from './src/components//placeInput/placeInput';
 import PlaceList from './src/components/placeList/placeList';
 
+const placeImage =  require("./src/assets/placeImage.jpg")
 interface dataObject {
   key: any;
-  value: string;
+  name: string;
+  image: any
 }
 
 type State = {
@@ -43,7 +46,8 @@ export class App extends Component<{}, State> {
       return {
         places: prevState.places.concat({
           key: Math.random(),
-          value: this.state.placesName
+          name: this.state.placesName,
+          image: placeImage
         }),
         placesName: ''
       };

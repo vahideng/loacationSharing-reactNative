@@ -1,24 +1,34 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity ,Image } from 'react-native';
 
 
 type Props = {
   locationPlaces: string;
-  itemPressd: (i: any)=>(void)
+  itemPressd: (i: any)=>(void);
+  placeImage: any
 };
 
 const listItem: React.FC<Props> = props => (
   <TouchableOpacity style={styles.listItem} onPress={props.itemPressd}>
-    <Text>{props.locationPlaces}</Text>
+    <Image resizeMode="cover" style={styles.placeImage} source={props.placeImage} />
+    <Text >{props.locationPlaces}</Text>
   </TouchableOpacity>
-);
+); 
 
 const styles = StyleSheet.create({
   listItem: {
     width: '100%',
     padding: 10,
     backgroundColor: '#eee',
-    marginTop: 20
+    marginTop: 20,
+    flexDirection: "row",
+    alignItems :"center"
+
+  },
+  placeImage :{
+    marginRight: 8,
+    width: 30,
+    height: 30
   }
 });
 

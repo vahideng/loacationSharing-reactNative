@@ -1,9 +1,11 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import ListItems from '../ListItem/ListItem';
+
 interface dataObject {
   key: any;
-  value: string;
+  name: string;
+  image: any
 }
 type Props = {
   places: dataObject[];
@@ -19,7 +21,8 @@ const PlaceList: React.FC<Props> = props => {
         return (
           <ListItems
             itemPressd={() => props.deleteHandler(info.item.key)}
-            locationPlaces={info.item.value}
+            locationPlaces={info.item.name}
+            placeImage={info.item.image}
           />
         );
       }}
