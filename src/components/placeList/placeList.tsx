@@ -15,9 +15,11 @@ type Props = {
 const PlaceList: React.FC<Props> = props => {
   return (
     <FlatList<any> style={styles.ScrollViewsStyle} 
-      keyExtractor={item => item.key.toString()}
+    keyExtractor={item => item.key.toString()}
       data={props.places} //array of object with key properties
       renderItem={info => {
+       
+          
         return (
           <ListItems
             itemPressd={() => props.placeSelected(info.item.key)}
