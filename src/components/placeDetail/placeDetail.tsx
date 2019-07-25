@@ -1,17 +1,24 @@
 import React from 'react';
-import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
+import {
+  Image,
+  Modal,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from 'react-native';
+import Icons from 'react-native-vector-icons/Ionicons';
 
 type selectedPlaceObject = {
   image: any;
   name: string;
-  key: number
+  key: number;
 };
 type Props = {
   slectedPlace: selectedPlaceObject;
   PlaceImage: any;
-  onItemDelete: (key: number)=>(void);
-  onModalClosed: any
+  onItemDelete: (key: number) => void;
+  onModalClosed: any;
 };
 const placeDetails: React.FC<Props> = props => {
   let selectedplace = null;
@@ -29,11 +36,14 @@ const placeDetails: React.FC<Props> = props => {
       <View style={styles.modalContainer}>
         {selectedplace}
         <View>
-          <TouchableOpacity onPress={()=>props.onItemDelete(props.slectedPlace.key)}>
-            <Text style={styles.deleteButton}>Delete</Text>
+          <TouchableOpacity
+            onPress={() => props.onItemDelete(props.slectedPlace.key)}
+          >
+            <Icons name="ios-trash" size={30} color="red" />
           </TouchableOpacity>
+
           <TouchableOpacity onPress={props.onModalClosed}>
-            <Text>Cencel</Text>
+            <Icons name="md-arrow-back" size={30} color="blue" />
           </TouchableOpacity>
         </View>
       </View>
@@ -45,7 +55,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     margin: 22,
-    marginTop:"20%",
+    marginTop: '20%',
     alignItems: 'center'
   },
 
@@ -56,14 +66,14 @@ const styles = StyleSheet.create({
     color: 'red'
   },
   ImagePlace: {
-    width: "100%",
+    width: '100%',
     height: 200
   },
-  placeName : {
-      margin:10,
-      fontWeight: "bold",
-      textAlign: "center",
-      fontSize : 28
+  placeName: {
+    margin: 10,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 28
   }
 });
 export default placeDetails;

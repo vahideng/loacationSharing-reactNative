@@ -1,6 +1,12 @@
 import * as actionTypes from './actionTypes';
+import { placeName } from '../type';
 
-export const addPlace = (placeName: string) => {
+interface addPlace {
+  type: typeof actionTypes.ADD_PLACE;
+  placeName: placeName;
+}
+
+export const addPlace = (placeName: placeName): addPlace => {
   return {
     type: actionTypes.ADD_PLACE,
     placeName

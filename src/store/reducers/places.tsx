@@ -1,13 +1,19 @@
 import * as actionTypes from '../actions/actionTypes';
+import { placeState } from '../type';
 
 
 
-const initialState = {
+const initialState :placeState = {
     places: [],
-    selectedPlace: null
+    selectedPlace: {}
   };
+  type myActions= {  
+        type: any,
+        placeName : any,
+        placeKey : number    
+  } 
   
-  const reducer = (state = initialState, action) => {
+  const reducer = (state = initialState, action:myActions) => {
     switch (action.type) {
       case actionTypes.ADD_PLACE:
         return {
@@ -29,10 +35,7 @@ const initialState = {
           }),
           selectedPlace: null
         };
-      case actionTypes.SELECT_PLACE:
-    
-          
-          
+      case actionTypes.SELECT_PLACE:   
         return {
           ...state,
           selectedPlace: state.places.find((place:any) => {
