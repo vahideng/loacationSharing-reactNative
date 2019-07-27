@@ -9,45 +9,34 @@ import {
 } from 'react-navigation';
 import { ROUTES } from '../../routes/index';
 
- const ShareLocation: NavigationScreenComponent<{}> = () => {
+const ShareLocation: NavigationScreenComponent<{}> = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home Screen</Text>
+      <Text style={styles.title}>Share Screen</Text>
     </View>
   );
 };
 
-ShareLocation.navigationOptions = (screenProps: NavigationScreenProps): NavigationStackScreenOptions => {
-  // Navigate to details view
+ShareLocation.navigationOptions = (
+  screenProps: NavigationScreenProps
+): NavigationStackScreenOptions => {
+ 
   const buttonRightPress = () => {
     screenProps.navigation.navigate(ROUTES.SearchLocation);
   };
 
-const buttonleftPress = ()=>{
-    screenProps.navigation.navigate(ROUTES.ShareLocation)
-}
-return {
-    headerLeft: (
-        
-        <Icons.Button
-          name="ios-search"
-        
-          underlayColor="transparent"
-          color="wheat"
-          onPress={buttonleftPress}
-        />
-      ),
-      headerRight: (
-        <Icons.Button
-          name="ios-arrow-back"
-          backgroundColor="transparent"
-          underlayColor="transparent"
-          color="wheat"
-          onPress={buttonRightPress}
-        />
-      )
-    };
-
+  return {
+    
+    headerRight: (
+      <Icons.Button
+        name="ios-arrow-back"
+        backgroundColor="white"
+        underlayColor="transparent"
+        color="black"
+        onPress={buttonRightPress}
+      />
+    )
+  };
 };
 
 const styles = StyleSheet.create({
@@ -64,4 +53,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ShareLocation
+export default ShareLocation;

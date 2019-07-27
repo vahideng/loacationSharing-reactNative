@@ -3,6 +3,7 @@ import React from 'react';
 import { TextInput,TouchableHighlight,View, Text, StyleSheet } from 'react-native';
 
 type Props = {
+  
     placesName: string;
   placeCHangeHandler: ((e: any) => any),
   addPlaceHandler :(()=> any)
