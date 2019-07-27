@@ -1,18 +1,16 @@
 import * as actionTypes from '../actions/actionTypes';
 import { placeState } from '../type';
 
-
-
 const initialState :placeState = {
     places: [],
-    selectedPlace: {}
+    selectedPlace: null
   };
   type myActions= {  
         type: any,
         placeName : any,
         placeKey : number    
   } 
-  
+
   const reducer = (state = initialState, action:myActions) => {
     switch (action.type) {
       case actionTypes.ADD_PLACE:

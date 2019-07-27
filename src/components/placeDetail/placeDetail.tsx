@@ -31,6 +31,8 @@ const placeDetails: React.FC<Props> = props => {
     );
   }
 
+  console.log(props.slectedPlace,"props.slectedPlace");
+  
   return (
     <Modal visible={props.slectedPlace ? true : false} animationType="slide">
       <View style={styles.modalContainer}>
