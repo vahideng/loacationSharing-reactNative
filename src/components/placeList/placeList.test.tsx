@@ -15,9 +15,8 @@ interface dataObject {
     image: any
   }
 const mainProps = {
-    places: dataObject[];
-    placeSelected: (e: any) => any;
-};
+    places: [],
+    placeSelected:""};
 //setup is factory function to create shallow wrapper or videoplayer components
 const setup = (props = {}, state = null) => {
   return shallow(<PlaceList {...mainProps} />);

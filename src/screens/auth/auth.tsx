@@ -1,7 +1,10 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ImageBackground } from 'react-native';
+
 import DefaultButton from '../../components/UI/defaultButton';
 import DefaultTextInput from '../../components/UI/defaultTextInput';
+
+import myImage from '../../assets/placeImage.jpg';
 
 type Props = {
   onpresed: any;
@@ -9,16 +12,28 @@ type Props = {
 
 class Auth extends React.Component<Props> {
   render() {
-    
     return (
-      <View style={styled.container}>
-         <DefaultButton  onPress={this.props.onpresed} title="Switch to login" />
-        <DefaultTextInput placeholder="Your email Adrress" style={styled.textLogin} />
-        <DefaultTextInput placeholder="Password" style={styled.textLogin} />
-        <DefaultTextInput placeholder="Confirm password" style={styled.textLogin} />
-        <DefaultButton  onPress={this.props.onpresed} title="Submit" />
-       
-      </View>
+      <ImageBackground
+        source={myImage}
+        style={{ width: '100%', height: '100%' }}
+      >
+        <View style={styled.container}>
+          <DefaultButton
+            onPress={this.props.onpresed}
+            title="Switch to login"
+          />
+          <DefaultTextInput
+            placeholder="Your email Adrress"
+            style={styled.textLogin}
+          />
+          <DefaultTextInput placeholder="Password" style={styled.textLogin} />
+          <DefaultTextInput
+            placeholder="Confirm password"
+            style={styled.textLogin}
+          />
+          <DefaultButton onPress={this.props.onpresed} title="Submit" />
+        </View>
+      </ImageBackground>
     );
   }
 }
@@ -31,8 +46,7 @@ const styled = StyleSheet.create({
   },
   textLogin: {
     width: '80%',
-    height : 30
-  
+    height: 30
   },
   login: {
     flex: 1,

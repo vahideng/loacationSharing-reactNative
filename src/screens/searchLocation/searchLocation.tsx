@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ScrollView, Image } from 'react-native';
 import { connect } from 'react-redux';
 import PlaceDetail from '../../components/placeDetail/placeDetail';
 import PlaceInput from '../../components/placeInput/placeInput';
 import PlaceList from '../../components/placeList/placeList';
 import * as actions from '../../store/actions/index';
-
-const placeImage : any = require('../../assets/placeImage.jpg');
+import DefaultText from '../../components/UI/defaultText';
+import DefaultButton from '../../components/UI/defaultButton';
+import DefaulttextInput from '../../components/UI/defaultTextInput';
+import imagePreview from '../../assets/placeImage.jpg';
+const placeImage: any = require('../../assets/placeImage.jpg');
 
 interface dataObject {
   key: any;
@@ -40,9 +43,9 @@ export class SearchLocation extends Component<Props, State> {
       return;
     }
     this.props.onAddPlace(this.state.placesName);
-    this.setState({placesName: ""})
+    this.setState({ placesName: '' });
   };
-
+  placeSelecteds = () => {};
   onModalClosed = (): void => {
     this.props.onCloseModal();
   };
@@ -50,14 +53,28 @@ export class SearchLocation extends Component<Props, State> {
   onItemDelete = (key: number): void => {
     this.props.onDeletePlace();
   };
-  placeSelected = (index: number) => {
-    this.props.onSelectPlace(index);
-  };
 
   render() {
     return (
-      <View style={styles.container}>
-        <PlaceDetail
+      <ScrollView>
+        <View style={styles.container}>
+          <DefaultText context="Share a place with us" />
+          <View style={styles.placeHolderView}>
+            <Image source={imagePreview} style={styles.ImagePreview} />
+          </View>
+          <DefaultButton title="Pick Image" onPress={this.placeSelecteds} />
+          <View style={styles.placeHolderView}>
+            <DefaultText context="MAP" />
+          </View>
+          <DefaultButton title="Locate Me" onPress={this.placeSelecteds} />
+          <PlaceInput
+            placesName={this.state.placesName}
+            placeCHangeHandler={this.placeCHangeHandler}
+            addPlaceHandler={this.addPlaceHandler}
+          />
+
+          <DefaultButton title="Share A Place" onPress={this.addPlaceHandler} />
+          {/* <PlaceDetail
           onModalClosed={this.onModalClosed}
           onItemDelete={this.onItemDelete}
           slectedPlace={this.props.selectedPlaces}
@@ -67,13 +84,9 @@ export class SearchLocation extends Component<Props, State> {
           placesName={this.state.placesName}
           placeCHangeHandler={this.placeCHangeHandler}
           addPlaceHandler={this.addPlaceHandler}
-        />
-
-        <PlaceList
-          places={this.props.places}
-          placeSelected={this.placeSelected}
-        />
-      </View>
+        /> */}
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -85,6 +98,20 @@ const styles = StyleSheet.create({
     padding: 46,
     backgroundColor: '#fff',
     justifyContent: 'flex-start'
+  },
+  placeHolderView: {
+    height: 150,
+    width: '80%',
+    borderWidth: 1,
+    borderColor: 'red'
+  },
+
+  placeHolder: {
+    width: '80%'
+  },
+  ImagePreview: {
+    height: '100%',
+    width: '100%'
   }
 });
 
@@ -106,4 +133,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(SearchLocation);
-

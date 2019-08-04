@@ -7,6 +7,8 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
+
+import DefaultTextinput from '../UI/defaultTextInput'
 import DefaultButton from '../UI/defaultButton';
 type Props = {
   placesName: string;
@@ -16,17 +18,14 @@ type Props = {
 
 const placeInput: React.FC<Props> = props => (
   <View style={styles.inputContainer}>
-    <TextInput
+    <DefaultTextinput
       style={styles.placeInput}
       onChangeText={props.placeCHangeHandler}
       value={props.placesName}
       placeholder={'An awesome place'}
     />
 
-    <DefaultButton
-      title="Add a Place"
-      onPress={props.addPlaceHandler}
-    />
+    
   </View>
 );
 
@@ -35,15 +34,13 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+   
   },
   placeInput: {
-    width: '70%'
+    width: '100%',
+    height:30
   },
-  placeButton: {
-    width: '30%',
-    alignItems: 'center'
-  }
+  
 });
 
 export default placeInput;
