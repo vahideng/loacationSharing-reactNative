@@ -2,7 +2,7 @@ import {createStore, combineReducers, compose} from 'redux';
 import placeReducer from './reducers/places'
 
 declare global {
-    interface Window { __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any; }
+    interface Window { __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any }
 }
 
 const rootReducer = combineReducers<any>({

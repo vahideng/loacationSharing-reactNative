@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Image,
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native';
+import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 
 type selectedPlaceObject = {
@@ -22,6 +15,9 @@ type Props = {
 };
 const placeDetails: React.FC<Props> = props => {
   let selectedplace = null;
+
+  console.log(props,"props");
+  
   if (props.slectedPlace) {
     selectedplace = (
       <>

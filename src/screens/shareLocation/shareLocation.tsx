@@ -17,27 +17,27 @@ const ShareLocation: NavigationScreenComponent<{}> = () => {
   );
 };
 
-ShareLocation.navigationOptions = (
-  screenProps: NavigationScreenProps
-): NavigationStackScreenOptions => {
+// ShareLocation.navigationOptions = (
+//   screenProps: NavigationScreenProps
+// ): NavigationStackScreenOptions => {
  
-  const buttonRightPress = () => {
-    screenProps.navigation.navigate(ROUTES.SearchLocation);
-  };
+//   const buttonRightPress = () => {
+//     screenProps.navigation.navigate(ROUTES.SearchLocation);
+//   };
 
-  return {
+//   return {
     
-    headerRight: (
-      <Icons.Button
-        name="ios-arrow-back"
-        backgroundColor="white"
-        underlayColor="transparent"
-        color="black"
-        onPress={buttonRightPress}
-      />
-    )
-  };
-};
+//     headerRight: (
+//       <Icons.Button
+//         name="ios-arrow-back"
+//         backgroundColor="white"
+//         underlayColor="transparent"
+//         color="black"
+//         onPress={buttonRightPress}
+//       />
+//     )
+//   };
+// };
 
 const styles = StyleSheet.create({
   container: {

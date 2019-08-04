@@ -1,47 +1,38 @@
-import {
-  createAppContainer,
-  createBottomTabNavigator,
-  createStackNavigator
-} from 'react-navigation';
 import React from 'react';
-
-import ShareLocation from '../screens/shareLocation/shareLocation';
 import Icons from 'react-native-vector-icons/Ionicons';
-import SearchLocation from '../screens/searchLocation/searchLocation';
+import { createAppContainer, createBottomTabNavigator, createSwitchNavigator } from 'react-navigation';
+import Auth from '../screens/auth/auth';
+import searchLocation from '../screens/searchLocation/searchLocation';
+import ShareLocation from '../screens/shareLocation/shareLocation';
+
 export enum ROUTES {
   SearchLocation = 'SearchLocation',
   ShareLocation = 'ShareLocation',
   ModalStack = 'ModalStack',
-  MainStack = 'MainStack'
+  MainStack = 'MainStack',
+  Auth = 'Auth',
+  RootStack = 'RootStack'
 }
 
-const ModalStack = createStackNavigator({
-  SearchLocation,
-  ShareLocation
-});
-const MainStack = createStackNavigator({
-  ShareLocation
-});
 const RootStack = createBottomTabNavigator(
   {
-    'Search Location': ModalStack,
-    'Share Location': MainStack
+    [ROUTES.SearchLocation]: searchLocation,
+    [ROUTES.ShareLocation]: ShareLocation
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         let iconName: any;
+
         const { routeName } = navigation.state;
         let IconComponent = Icons;
-
-        if (routeName === 'Share Location') {
+        if (routeName === ROUTES.ShareLocation) {
           iconName = `ios-information-circle${focused ? '' : '-outline'}`;
           IconComponent = Icons;
-        } else if (routeName === 'Search Location') {
+        } else if (routeName === ROUTES.SearchLocation) {
           iconName = `${focused ? 'md-search' : 'ios-search'}`;
         }
 
-        // You can return any component that you like here!
         return <IconComponent name={iconName} size={25} />;
       }
     }),
@@ -54,7 +45,19 @@ const RootStack = createBottomTabNavigator(
     }
   }
 );
-// The stack for the main navigation
+const AuthStack = createSwitchNavigator({
+  [ROUTES.Auth]: {
+    screen: ({ navigation }: any) => {
+      console.log(navigation.navigate, 'navigation');
 
-const AppContainer = createAppContainer(RootStack);
+      return <Auth onpresed={() => navigation.navigate(ROUTES.RootStack)} />;
+    },
+    navigationOptions: {
+      title: 'Authentication'
+    }
+  },
+  [ROUTES.RootStack]: RootStack
+});
+
+const AppContainer = createAppContainer(AuthStack);
 export default AppContainer;

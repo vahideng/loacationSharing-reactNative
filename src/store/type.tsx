@@ -1,4 +1,4 @@
-import { any } from 'prop-types';
+
 
 export interface placeName {
   key: number;

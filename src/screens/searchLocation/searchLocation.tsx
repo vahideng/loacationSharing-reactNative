@@ -81,7 +81,6 @@ export class SearchLocation extends Component<Props, State> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     alignItems: 'center',
     padding: 46,
     backgroundColor: '#fff',

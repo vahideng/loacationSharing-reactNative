@@ -1,19 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity ,Image } from 'react-native';
-
+import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 
 type Props = {
   locationPlaces: string;
-  itemPressd: (i: any)=>(void);
-  placeImage: any
+  itemPressd: (i: any) => void;
+  placeImage: any;
 };
 
 const listItem: React.FC<Props> = props => (
   <TouchableOpacity style={styles.listItem} onPress={props.itemPressd}>
-    <Image resizeMode="cover" style={styles.placeImage} source={props.placeImage} />
-    <Text >{props.locationPlaces}</Text>
+    <Image
+      resizeMode="cover"
+      style={styles.placeImage}
+      source={props.placeImage}
+    />
+    <Text>{props.locationPlaces}</Text>
   </TouchableOpacity>
-); 
+);
 
 const styles = StyleSheet.create({
   listItem: {
@@ -21,11 +24,10 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#eee',
     marginTop: 20,
-    flexDirection: "row",
-    alignItems :"center"
-
+    flexDirection: 'row',
+    alignItems: 'center'
   },
-  placeImage :{
+  placeImage: {
     marginRight: 8,
     width: 30,
     height: 30
