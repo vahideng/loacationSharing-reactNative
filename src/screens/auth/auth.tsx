@@ -1,6 +1,6 @@
 import { Formik } from 'formik';
 import React from 'react';
-import { Alert, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import * as Yup from 'yup';
 import myImage from '../../assets/placeImage.jpg';
 import DefaultButton from '../../components/UI/defaultButton';
@@ -85,7 +85,7 @@ const styled = StyleSheet.create({
   },
   textLogin: {
     width: '80%',
-    height: 30
+    height: 40
   },
   login: {
     flex: 1,

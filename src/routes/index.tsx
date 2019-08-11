@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import { createAppContainer, createBottomTabNavigator, createDrawerNavigator, createSwitchNavigator } from 'react-navigation';
 import Auth from '../screens/auth/auth';
@@ -14,6 +15,10 @@ export enum ROUTES {
   RootStack = 'RootStack'
 }
 
+const getTypedIcon = (name: any) => {
+  return Platform.OS === "ios" ? `ios-${name}` : `md-${name}`;   
+};
+
 const RootStack = createBottomTabNavigator(
   {
     [ROUTES.SearchLocation]: searchLocation,
@@ -27,10 +32,11 @@ const RootStack = createBottomTabNavigator(
         const { routeName } = navigation.state;
         let IconComponent = Icons;
         if (routeName === ROUTES.ShareLocation) {
-          iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+          iconName = getTypedIcon(`share`)
           IconComponent = Icons;
         } else if (routeName === ROUTES.SearchLocation) {
-          iconName = `${focused ? 'md-search' : 'ios-search'}`;
+          iconName = getTypedIcon(`search`)
+        
         }
 
         return <IconComponent name={iconName} size={25} />;
