@@ -9,7 +9,7 @@ type selectedPlaceObject = {
 };
 type Props = {
   slectedPlace: selectedPlaceObject;
-  PlaceImage: any;
+  PlaceImage?: any;
   onItemDelete: (key: number) => void;
   onModalClosed: any;
 };

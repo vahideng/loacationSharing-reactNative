@@ -1,6 +1,6 @@
 import React from 'react';
 import Icons from 'react-native-vector-icons/Ionicons';
-import { createAppContainer, createBottomTabNavigator, createSwitchNavigator } from 'react-navigation';
+import { createAppContainer, createBottomTabNavigator, createDrawerNavigator, createSwitchNavigator } from 'react-navigation';
 import Auth from '../screens/auth/auth';
 import searchLocation from '../screens/searchLocation/searchLocation';
 import ShareLocation from '../screens/shareLocation/shareLocation';
@@ -59,5 +59,19 @@ const AuthStack = createSwitchNavigator({
   [ROUTES.RootStack]: RootStack
 });
 
-const AppContainer = createAppContainer(AuthStack);
+
+const DrawerNavigator = createDrawerNavigator({
+  Logout : AuthStack
+},{
+  hideStatusBar: true,
+  drawerBackgroundColor: 'rgba(255,255,255,.9)',
+  overlayColor: '#6b52ae',
+ 
+    drawerPosition: 'left',
+  contentOptions: {
+    activeTintColor: '#fff',
+    activeBackgroundColor: '#6b52ae',
+   
+  }});
+const AppContainer = createAppContainer(DrawerNavigator);
 export default AppContainer;

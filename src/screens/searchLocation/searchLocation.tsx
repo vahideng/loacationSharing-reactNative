@@ -9,6 +9,7 @@ import DefaultText from '../../components/UI/defaultText';
 import DefaultButton from '../../components/UI/defaultButton';
 import DefaulttextInput from '../../components/UI/defaultTextInput';
 import imagePreview from '../../assets/placeImage.jpg';
+import { Formik } from 'formik';
 const placeImage: any = require('../../assets/placeImage.jpg');
 
 interface dataObject {
@@ -27,6 +28,7 @@ type Props = {
   onSelectPlace: (place: any) => any;
   selectedPlaces: any;
   places: any;
+  navigation : any
 };
 
 export class SearchLocation extends Component<Props, State> {
@@ -45,7 +47,10 @@ export class SearchLocation extends Component<Props, State> {
     this.props.onAddPlace(this.state.placesName);
     this.setState({ placesName: '' });
   };
-  placeSelecteds = () => {};
+  pp = () => {
+
+    this.props.navigation.toggleDrawer();
+  };
   onModalClosed = (): void => {
     this.props.onCloseModal();
   };
@@ -62,11 +67,11 @@ export class SearchLocation extends Component<Props, State> {
           <View style={styles.placeHolderView}>
             <Image source={imagePreview} style={styles.ImagePreview} />
           </View>
-          <DefaultButton title="Pick Image" onPress={this.placeSelecteds} />
+          <DefaultButton title="Pick Image" onPress={this.pp} />
           <View style={styles.placeHolderView}>
             <DefaultText context="MAP" />
           </View>
-          <DefaultButton title="Locate Me" onPress={this.placeSelecteds} />
+          <DefaultButton title="Locate Me" onPress={this.pp} />
           <PlaceInput
             placesName={this.state.placesName}
             placeCHangeHandler={this.placeCHangeHandler}

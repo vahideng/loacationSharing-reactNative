@@ -1,53 +1,57 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { NavigationScreenComponent } from 'react-navigation';
-import PlaceList from '../../components/placeList/placeList'
-
-import {connect} from 'react-redux'
-import  * as actions from '../../store/actions'
-
+import { connect } from 'react-redux';
+import PlaceDetail from '../../components/placeDetail/placeDetail';
+import PlaceList from '../../components/placeList/placeList';
+import * as actions from '../../store/actions';
+type selectedPlaceObject = {
+  image: any;
+  name: string;
+  key: number;
+};
 
 type Props = {
-  places : any,
-  placeSelected : any,
+  selectedPlaces: selectedPlaceObject;
+  places: any;
+  placeSelected: any;
   onSelectPlace: (key: number) => any;
-  placeSelecteds : ()=> any
+  placeSelecteds: () => any;
+  onCloseModal: any;
+  onDeletePlace: () => any;
+};
 
-}
-
-class ShareLocation extends Component <Props,{}> {
-
+class ShareLocation extends Component<Props, {}> {
   placeSelected = (index: number) => {
     this.props.onSelectPlace(index);
   };
-  placeSelecteds = () => {
-   
-  };
-  render (){
+  placeSelecteds = () => {};
+  render() {
     return (
       <View style={styles.container}>
-      
-       <PlaceList
-            places={this.props.places}
-            placeSelected={this.placeSelected}
-          />
+        <PlaceList
+          places={this.props.places}
+          placeSelected={this.placeSelected}
+        />
+        <PlaceDetail
+          onModalClosed={this.props.onCloseModal}
+          onItemDelete={this.props.onDeletePlace}
+          slectedPlace={this.props.selectedPlaces}
+        />
       </View>
-    )
-
+    );
   }
- 
-};
+}
 
 // ShareLocation.navigationOptions = (
 //   screenProps: NavigationScreenProps
 // ): NavigationStackScreenOptions => {
- 
+
 //   const buttonRightPress = () => {
 //     screenProps.navigation.navigate(ROUTES.SearchLocation);
 //   };
 
 //   return {
-    
+
 //     headerRight: (
 //       <Icons.Button
 //         name="ios-arrow-back"
@@ -60,11 +64,9 @@ class ShareLocation extends Component <Props,{}> {
 //   };
 // };
 
-
-
 const styles = StyleSheet.create({
   container: {
-    marginTop : "10%",
+    marginTop: '10%',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -90,5 +92,8 @@ const mapDispatchToProps = (dispatch: any) => {
     onSelectPlace: (key: number) => dispatch(actions.selectPlace(key)),
     onCloseModal: () => dispatch(actions.closeMoadl())
   };
-}
-export default connect(mapStateToProps, mapDispatchToProps)(ShareLocation);
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShareLocation);

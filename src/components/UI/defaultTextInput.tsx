@@ -5,7 +5,8 @@ type Props = {
   style?: object;
   placeholder?: string;
   onChangeText ?: any;
-  value ?: any
+  value ?: any,
+  label ?:any
 };
 
 const defaultTextInput: React.FC<Props> = props => (
@@ -19,6 +20,7 @@ const defaultTextInput: React.FC<Props> = props => (
 const styles = StyleSheet.create({
   DefaultTextInput: {
     fontSize: 12,
+
     borderColor: 'gray',
     borderWidth: 1,
     width: '100%',

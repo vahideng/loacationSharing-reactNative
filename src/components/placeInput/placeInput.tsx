@@ -1,15 +1,8 @@
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import DefaultTextinput from '../UI/defaultTextInput';
 
-import {
-  TextInput,
-  TouchableHighlight,
-  View,
-  Text,
-  StyleSheet
-} from 'react-native';
 
-import DefaultTextinput from '../UI/defaultTextInput'
-import DefaultButton from '../UI/defaultButton';
 type Props = {
   placesName: string;
   placeCHangeHandler: (e: any) => any;
