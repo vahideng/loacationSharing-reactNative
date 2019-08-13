@@ -68,6 +68,7 @@ class Auth extends React.Component<Props> {
               />
                <Text style={styled.Warning}>{errors.passwordConfirmation}</Text>
               <DefaultButton onPress={handleSubmit} title="Submit" />
+             
             </React.Fragment>
           )}
         </Formik>

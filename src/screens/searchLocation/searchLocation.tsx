@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Image } from 'react-native';
+import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { connect } from 'react-redux';
-import PlaceDetail from '../../components/placeDetail/placeDetail';
-import PlaceInput from '../../components/placeInput/placeInput';
-import PlaceList from '../../components/placeList/placeList';
-import * as actions from '../../store/actions/index';
-import DefaultText from '../../components/UI/defaultText';
-import DefaultButton from '../../components/UI/defaultButton';
-import DefaulttextInput from '../../components/UI/defaultTextInput';
 import imagePreview from '../../assets/placeImage.jpg';
-import { Formik } from 'formik';
+import PlaceInput from '../../components/placeInput/placeInput';
+import DefaultButton from '../../components/UI/defaultButton';
+import DefaultText from '../../components/UI/defaultText';
+import * as actions from '../../store/actions/index';
 const placeImage: any = require('../../assets/placeImage.jpg');
-
 interface dataObject {
   key: any;
   name: string;
@@ -63,6 +59,17 @@ export class SearchLocation extends Component<Props, State> {
     return (
       <ScrollView>
         <View style={styles.container}>
+        <MapView
+       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+      
+       region={{
+         latitude: 37.78825,
+         longitude: -122.4324,
+         latitudeDelta: 0.015,
+         longitudeDelta: 0.0121,
+       }}
+     >
+     </MapView>
           <DefaultText context="Share a place with us" />
           <View style={styles.placeHolderView}>
             <Image source={imagePreview} style={styles.ImagePreview} />
