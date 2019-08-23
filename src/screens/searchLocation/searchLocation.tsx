@@ -28,6 +28,9 @@ type Props = {
 };
 
 export class SearchLocation extends Component<Props, State> {
+
+
+
   state: State = {
     placesName: ''
   };
