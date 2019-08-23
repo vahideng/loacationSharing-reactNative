@@ -16,7 +16,7 @@ export enum ROUTES {
 }
 
 const getTypedIcon = (name: any) => {
-  return Platform.OS === "ios" ? `ios-${name}` : `md-${name}`;   
+  return Platform.OS === 'ios' ? `ios-${name}` : `md-${name}`;
 };
 
 const RootStack = createBottomTabNavigator(
@@ -32,11 +32,10 @@ const RootStack = createBottomTabNavigator(
         const { routeName } = navigation.state;
         let IconComponent = Icons;
         if (routeName === ROUTES.ShareLocation) {
-          iconName = getTypedIcon(`share`)
+          iconName = getTypedIcon(`share`);
           IconComponent = Icons;
         } else if (routeName === ROUTES.SearchLocation) {
-          iconName = getTypedIcon(`search`)
-        
+          iconName = getTypedIcon(`search`);
         }
 
         return <IconComponent name={iconName} size={25} />;
@@ -65,19 +64,20 @@ const AuthStack = createSwitchNavigator({
   [ROUTES.RootStack]: RootStack
 });
 
-
-const DrawerNavigator = createDrawerNavigator({
-  Logout : AuthStack
-},{
-  hideStatusBar: true,
-  drawerBackgroundColor: 'rgba(255,255,255,.9)',
-  overlayColor: '#6b52ae',
- 
+const DrawerNavigator = createDrawerNavigator(
+  {
+    Logout: AuthStack
+  },
+  {
+    hideStatusBar: true,
+    drawerBackgroundColor: 'rgba(255,255,255,.9)',
+    overlayColor: '#6b52ae',
     drawerPosition: 'left',
-  contentOptions: {
-    activeTintColor: '#fff',
-    activeBackgroundColor: '#6b52ae',
-   
-  }});
+    contentOptions: {
+      activeTintColor: '#fff',
+      activeBackgroundColor: '#6b52ae'
+    }
+  }
+);
 const AppContainer = createAppContainer(DrawerNavigator);
 export default AppContainer;

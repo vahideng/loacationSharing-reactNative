@@ -2,22 +2,22 @@ import React from 'react';
 import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 
-type selectedPlaceObject = {
+interface ISelectedPlaceObject  {
   image: any;
   name: string;
   key: number;
 };
-type Props = {
-  slectedPlace: selectedPlaceObject;
+interface IProps  {
+  slectedPlace: ISelectedPlaceObject;
   PlaceImage?: any;
   onItemDelete: (key: number) => void;
   onModalClosed: any;
 };
-const placeDetails: React.FC<Props> = props => {
+const placeDetails: React.FC<IProps> = props => {
   let selectedplace = null;
 
-  console.log(props,"props");
-  
+  console.log(props, 'props');
+
   if (props.slectedPlace) {
     selectedplace = (
       <>
@@ -27,8 +27,8 @@ const placeDetails: React.FC<Props> = props => {
     );
   }
 
-  console.log(props.slectedPlace,"props.slectedPlace");
-  
+  console.log(props.slectedPlace, 'props.slectedPlace');
+
   return (
     <Modal visible={props.slectedPlace ? true : false} animationType="slide">
       <View style={styles.modalContainer}>

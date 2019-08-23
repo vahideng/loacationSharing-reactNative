@@ -3,13 +3,13 @@ import { StyleSheet, View } from 'react-native';
 import DefaultTextinput from '../UI/defaultTextInput';
 
 
-type Props = {
+interface IProps  {
   placesName: string;
   placeCHangeHandler: (e: any) => any;
   addPlaceHandler: () => any;
 };
 
-const placeInput: React.FC<Props> = props => (
+const placeInput: React.FC<IProps> = props => (
   <View style={styles.inputContainer}>
     <DefaultTextinput
       style={styles.placeInput}

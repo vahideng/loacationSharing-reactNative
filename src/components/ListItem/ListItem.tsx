@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-type Props = {
+interface IProps  {
   locationPlaces: string;
   itemPressd: (i: any) => void;
   placeImage: any;
 };
 
-const listItem: React.FC<Props> = props => (
+const listItem: React.FC<IProps> = props => (
   <TouchableOpacity style={styles.listItem} onPress={props.itemPressd}>
     <Image
       resizeMode="cover"
